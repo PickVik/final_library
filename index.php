@@ -54,6 +54,7 @@ if (!empty($_POST)) {
                  
                  
                  </form>
+        <p>New user? Click <a href="signup.php">here</a>to register</p>
                 </div>
             </div>
         </div>
