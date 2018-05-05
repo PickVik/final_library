@@ -1,0 +1,44 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	background: url("") no-repeat center center fixed;
+	background-size: cover;
+        font-color: black;
+}
+
+.jumbotron {
+    background-color: black;
+    height: 150px;
+}
+
+.jumbotron h1{
+    color: #1c6288;
+    text-align: center;
+}
+
+.instructions {
+    background-color: green;
+    border-radius: 10px;
+}
+
+.instructions-container img {
+    width: 100%;
+}
+
+.instructions-container p {
+    margin-top: 20px;
+}
+
+#search_term {
+    width: 100%;
+}
+
+.row {
+   margin-bottom: 20px; 
+}
+
+.result{
+   background-color: lightsteelblue;
+   border-radius: 10px;
+   padding: 10px;
+}
+    
