@@ -54,11 +54,7 @@ if (!empty($_POST)) {
                  
                  
                  </form>
-<<<<<<< HEAD:login.php
-        <p>New user? Click <a href="signup.php">here</a>to register</p>
-=======
-        <p>New user? Click <a href="signup.php">here</a> to register</p>
->>>>>>> bc026a39bb53e7ebebbee608a3132f3d1899a79d:index.php
+        <p>New user? Click <a href="library_register.php">here</a> to register</p>
                 </div>
             </div>
         </div>
