@@ -51,6 +51,18 @@ class Books{
         //echo $sql;
         $this->pdo->exec($sql);
 }
-    
+    function search2 ($search_term)    {
+       echo "searching" ;
+       $sql = "SELECT * FROM `BOOKS` WHERE title like \"%$search_term%\" ";
+       $results = $this->pdo->query($sql);
+       return $results;
+//       print_r($results);
+//       foreach($results as $row) {
+//          // print_r($row);
+//           $book=new books ($row["ID"],$row["Title"], $row["ISBN"],$row["Price"]);
+//           array_push ($this->books, $book);
+//           
+//           
+//        }
+    }  
 }   
-
