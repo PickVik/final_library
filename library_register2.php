@@ -59,13 +59,15 @@ if (isset ($_POST['submit'])){
     color: #1c6288;
     text-align: center;
 }
+
+.form-input
 select,
 textarea,
 input[type="text"],
 input[type="password"],
 input[type="email"]
 
-{
+{ 
   height:30px;
   width:100%;;
   display: inline-block;
@@ -104,9 +106,15 @@ body{
     border: 1px solid #daf1ff;
 }
             
-            
-            
-            
+.container {
+    margin: auto 0;
+}
+
+.main-section {
+    margin: 0 auto;
+    vertical-align: middle;
+    padding:0;
+}          
             
             
             
@@ -119,10 +127,11 @@ body{
          <div class="jumbotron jumbotron-fluid">
         <h1>Please Register to Enter Our Site</h1>
     </div>
-       <div class="modal-dialog text-center">
-        <div class="col-sm-12 main-section">
+       <div class="container text-center">
+        <div class="col-sm-6 main-section">
     
             <div class="col-12 form-input">
+
         
 
         <form action="" method="post"> 
@@ -159,7 +168,7 @@ body{
          </div>
         </div>
     </div>
-    </div>
+ 
      
         
         
