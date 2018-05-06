@@ -26,11 +26,15 @@ class Booksearch{
        $sql = "SELECT books.ISBN, books.Title, books.Price, books.Genre, CONCAT(authors.`First Name`, ' ', authors.`Last Name`) as Author_Name
                FROM books     
                LEFT JOIN book_authors ON books.ISBN=book_authors.ISBN
-               LEFT JOIN authors ON book_authors.Author_ID=authors.AuthorID               
+               LEFT JOIN authors ON book_authors.Author_ID=authors.Author_ID               
                WHERE title like \"%$search_term%\" or books.ISBN like \"%$search_term%\" or Genre like \"%$search_term%\" or authors.`First Name` like  \"%$search_term%\" or authors.`Last Name` like \"%$search_term%\"";
        
-       $results = $this->pdo->query($sql);
-       return $results;
+       //$results = $this->pdo->query($sql);
+       echo $sql;
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(NULL);     
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+       //return $results;
     } 
     
 }
