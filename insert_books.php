@@ -3,33 +3,64 @@
 include 'book_class.php';
 
 if (!empty($_POST)) {
-    if (isset($_POST['Insert'])){
-        
-        $Book = new Books();
-
-        $Book->insert($_POST['ISBN'], $_POST['Title'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
-                   
-    }
-    if (isset($_post['Delete'])){
     
+   
+    if (isset($_POST['Delete'])){
+    echo 'delete';
     $Book = new Books();
     
     $Book->delete($_POST['Title']);
+    echo 'delete end';
 }
+if (isset($_POST['Insert'])){
+        echo 'insert';
+        $Book = new Books();
+        echo 'insert end';
+        $Book->insert($_POST['ISBN'], $_POST['Title'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
+                   
+    }
 
-    if (isset($_post['Update'])){
+    if (isset($_POST['Update'])){
     
     $Book = new Books();
     $Book->update($_POST['ISBN'], $_POST['Title'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
 }
 
-    if (isset($_post['Search'])){
+    if (isset($_POST['Search'])){
     
     $Book = new Books();
-    $Book->search($_POST['ISBN'], $_POST['Title'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
+    $results= $Book->search($_POST['ISBN'], $_POST['Title'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
+   ?>
+
+
+        <table>
+            <thead>
+                <th>Book Title</th>
+                <th>Borrow status</th>
+            </thead>
+            <tbody>
+   
+<?php
+
+foreach($results as $result) {
+                        
+            echo "<tr>";
+            echo "<td>{$result['Title']}</td>";
+            echo "<td>{$result['Borrow_status']}</td>";
+            echo "</tr>";
 }
-}
+
 ?>
+
+                 </tbody>
+        </table>
+<?php
+    }
+    
+}
+    ?>
+
+
 
 
 <!DOCTYPE html>
