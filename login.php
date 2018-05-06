@@ -1,25 +1,8 @@
 <?php
-
 session_start();
-
-include 'library_class.php';
-
-if (!empty($_POST)) {
-    if ($_POST['submit'] == 'Login'){
-
-        $library = new Library();
-
-        $library->login ($_POST['email'], $_POST['password']);
-                   
-
-    }
-    
-     elseif (empty($_POST["email"]) || empty($_POST["password"])) {
-        echo '<label>All fields are required</label>';
-}
-}
-
+require_once 'login_backend.php';
 ?>
+
 
 
 <!DOCTYPE html>
@@ -41,14 +24,16 @@ if (!empty($_POST)) {
                 <div class="col-12 user-img">
                     <img src="Book-tower (2).jpg" alt="books">
                 </div>
-    
+
     <div class="col-12 form-input">
-        <form action="" method="post">
-            <div class="form-group">
-                <input type="email" class="form-control" placeholder="Enter Email">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="form-group<?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+                <input type="email" name="email" class="form-control" placeholder="Enter Email" <?php echo $email; ?>>
+                <span class="help-block"><?php echo $email_err; ?></span>
             </div>
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="Enter Password">
+            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                <input type="password" name="password" class="form-control" placeholder="Enter Password">
+                <span class="help-block"><?php echo $password_err; ?></span>
             </div>     
             <button type="submit" class="btn btn-success">Login</button>
                  
@@ -60,7 +45,7 @@ if (!empty($_POST)) {
         </div>
     
     </div>
-  
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
