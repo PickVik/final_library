@@ -1,11 +1,11 @@
 <?php
 
-include 'book_class.php';
+include 'booksearch_class.php';
 
   if (!empty($_POST)) {
 
-        $books = new Books();
-        $results = $books->search2 ($_POST['search_term']);
+        $books = new Booksearch();
+        $results = $books->booksearch($_POST['search_term']);
 //        print_r ($results);
     }
 ?>
@@ -79,11 +79,11 @@ include 'book_class.php';
                         <div class="row result">
                             <div class="col-9">
                                 
-                           <?php echo $result ["ISBN"]; ?><br/>  
-                           <?php echo $result ["Title"]; ?><br/>
-                           <?php echo $result ["Price"]; ?><br/>
-                           <?php echo $result ["Genre"]; ?><br/>
-                           <?php echo $result ["Author_Name"]; ?><br/>
+                                <strong>ISBN:</strong> <?php echo $result ["ISBN"]; ?><br/>  
+                                <strong>Title:</strong> <?php echo $result ["Title"]; ?><br/>
+                                <strong>Genre:</strong> <?php echo $result ["Genre"]; ?><br/>
+                                <strong>Author:</strong> <?php echo $result ["Author_Name"]; ?><br/>
+                                <strong>Price:</strong> <?php echo $result ["Price"]; ?><br/>
                             </div>
                             <div class="col-3">
                                  <button class="btn btn-primary" type="submit">Borrow</button>  
