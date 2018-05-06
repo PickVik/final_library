@@ -5,10 +5,10 @@ if (isset ($_POST['submit'])){
     
     $conn = new mysqli('localhost', 'root', '', 'final_library');
     
-    $email = $conn->real_escape_string($_POST['email']);
-    $first_name = $conn->real_escape_string($_POST['firstname']);
-    $second_name = $conn->real_escape_string($_POST['secondname']);
-    $password = $conn->real_escape_string($_POST['password']);
+    $email = $conn->real_escape_string($_POST['Email']);
+    $first_name = $conn->real_escape_string($_POST['Firstname']);
+    $last_name = $conn->real_escape_string($_POST['Secondname']);
+    $password = $conn->real_escape_string($_POST['Password']);
     $cpassword = $conn->real_escape_string($_POST['cpassword']);
     
     foreach($_POST as $key=>$value) {
@@ -24,14 +24,16 @@ if (isset ($_POST['submit'])){
     } else {
         
        $hash = password_hash($password, PASSWORD_DEFAULT);
-       $conn->query("INSERT INTO user (Email, FirstName, SecondName, Password)
-          VALUES ('$email', '$first_name', '$second_name', '$hash')");
-       header( 'Location: ../NewTest/login.php');   
-        
+       $conn->query("INSERT INTO user (Email, Firstname, Secondname, Password) VALUES ('$email', '$first_name', '$last_name', '$hash')");
+    
+        header( 'Location: ../NewTest/login.php');
+    
+         
+    }
     }
     
     
-    }
+  
     
 }
 ?>
@@ -59,11 +61,11 @@ if (isset ($_POST['submit'])){
         <form action="" method="post"> 
         
             <div class="form-group">
-        <input type="email"  name="email" placeholder ="Enter Email"/>
+        <input type="email"  name="Email" placeholder ="Enter Email"/>
             </div>
                         
             <div class="form-group">
-        <input type="password" name="password" placeholder ="Enter Password"/>
+        <input type="password" name="Password" placeholder ="Enter Password"/>
             </div>
             
             <div class="form-group">
@@ -71,11 +73,11 @@ if (isset ($_POST['submit'])){
             </div>
                         
             <div class="form-group">
-        <input type="text" name="firstname" placeholder ="First Name"/>
+        <input type="text" name="Firstname" placeholder ="First Name"/>
             </div>
                         
             <div class="form-group">
-        <input type="text" name="secondname" placeholder ="Second Name"/>
+        <input type="text" name="Secondname" placeholder ="Last Name"/>
             </div>
         
         <input class="btn btn-success" type="submit" name="submit" value="Let me in"/> 
