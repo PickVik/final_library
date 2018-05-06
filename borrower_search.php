@@ -6,7 +6,7 @@ include 'book_class.php';
 
         $books = new Books();
         $results = $books->search2 ($_POST['search_term']);
-        print_r ($results);
+//        print_r ($results);
     }
 ?>
 <!DOCTYPE html>
@@ -68,7 +68,7 @@ include 'book_class.php';
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h3>Your results:</h3>
+                <h3>Your results for <strong><i><?php echo $_POST["search_term"]; ?></strong></i>:</h3>
             </div>
         </div>        
         
@@ -83,6 +83,7 @@ include 'book_class.php';
                            <?php echo $result ["Title"]; ?><br/>
                            <?php echo $result ["Price"]; ?><br/>
                            <?php echo $result ["Genre"]; ?><br/>
+                           <?php echo $result ["Author_Name"]; ?><br/>
                             </div>
                             <div class="col-3">
                                  <button class="btn btn-primary" type="submit">Borrow</button>  
