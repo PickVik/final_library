@@ -32,7 +32,7 @@ include 'book_class.php';
         <div class="row">
             <div class="col-9 instructions">
                 <p>  Searching for a book? - You've come to the right place! <br/>
-                     Select the search category you would like to use - Title, Author or book category<br/>
+<!--                     Select the search category you would like to use - Title, Author or book category<br/>-->
                      Type in your search word/s<br/>
                      Hit submit to get your results<br/>   
                 </p>
@@ -45,13 +45,13 @@ include 'book_class.php';
         <form action="" method="post" > 
             <div class="row">   
                  
-                    Search by
+<!--                    Search by
                     <select>
                         <option value="title">Title</option>
                         <option value="author">Author</option>
                         <option value="genre">Genre</option>
                         <option value="everything">Everything</option>
-                    </select>
+                    </select>-->
                    
                 <div class="col-6">
                     <input id="search_term" type="text" name="search_term" placeholder = "Your search keywords" /> <br>

@@ -53,7 +53,7 @@ class Books{
 }
     function search2 ($search_term)    {
        echo "searching" ;
-       $sql = "SELECT * FROM `BOOKS` WHERE title like \"%$search_term%\" ";
+       $sql = "SELECT * FROM `BOOKS` WHERE title like \"%$search_term%\" or ISBN like \"%$search_term%\" or Genre like \"%$search_term%\" ";
        $results = $this->pdo->query($sql);
        return $results;
 //       print_r($results);
