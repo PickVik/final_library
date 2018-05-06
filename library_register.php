@@ -43,20 +43,16 @@ if (isset ($_POST['submit'])){
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="register.css">
+        <link rel="stylesheet" href="signup.css">
         <title>Registration page</title>
     </head>
     <body>
-         <div class="jumbotron jumbotron-fluid">
+      <div class="jumbotron jumbotron-fluid">
         <h1>Please Register to Enter Our Site</h1>
-    </div>
-        <div class="modal-dialog text-center">
-        <div class="col-sm-12 main-section">
-    
-            <div class="col-12 form-input">
-            <div class="modal-content">
+     </div>
+        
 
-        <form action="" method="post"> 
+        <form align="center" action="" method="post"> 
         
             <div class="form-group">
         <input type="email"  name="email" placeholder ="Enter Email"/>
@@ -84,13 +80,10 @@ if (isset ($_POST['submit'])){
         <?php if ($msg != "") {echo $msg . "<br><br>";} ?>
       
         
-        </form>
+        
    
                             <label>Already Registered? Click <a href='login.php'>here</a> to log in</label>
-         </div>
-        </div>
-    </div>
-    </div>
+        </form>
      
         
         
