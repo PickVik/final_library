@@ -1,0 +1,46 @@
+
+
+
+  h1{
+    padding-top: 20px;  
+    font-size:x-large;
+    text-align: center;
+    height: 100px;
+    background-color: lightskyblue;
+   
+}   
+
+instructions {
+    background-color: buttonface;
+    border-radius: 10px;
+}
+
+instructions-container img {
+    width: 100%;
+    image-align: right;
+}
+
+ p {
+   padding-top: 20px;
+   font-size: large;
+   text-align: center; 
+   height: 75px;
+   background-color: lightseagreen;
+}
+
+container{
+    height: 100px;
+    background:cornsilk;
+    text-align: centre;
+    padding-top: 200px;
+    padding-left: 50px;
+}
+
+row{
+    text-align: right;
+    padding-left: 200px;
+    padding-bottom: 100px;
+}
+result{
+    text-align: right;
+}
