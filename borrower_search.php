@@ -26,13 +26,16 @@ include 'booksearch_class.php';
 <body>
     <div class="jumbotron jumbotron-fluid">
         <h1>Book Search</h1>
-    </div> 
-        
+    </div>     
+    
     <div class="container instructions-container">
+        <div class="row">
+            <a href="profile.php"><button>Go To Profile Page</button></a>
+        </div>
+        
         <div class="row">
             <div class="col-9 instructions">
                 <p>  Searching for a book? - You've come to the right place! <br/>
-<!--                     Select the search category you would like to use - Title, Author or book category<br/>-->
                      Type in your search word/s<br/>
                      Hit submit to get your results<br/>   
                 </p>
@@ -86,6 +89,7 @@ include 'booksearch_class.php';
                                 <strong>Author:</strong> <?php echo $result ["Author_Name"]; ?><br/>
                                 <strong>Price:</strong> <?php echo $result ["Price"]; ?><br/>
                             </div>
+                            
                             <div class="col-3">
                                  <button class="btn btn-primary" type="submit">Borrow</button>  
                             </div>  
