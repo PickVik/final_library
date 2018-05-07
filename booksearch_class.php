@@ -30,7 +30,7 @@ class Booksearch{
                WHERE title like \"%$search_term%\" or books.ISBN like \"%$search_term%\" or Genre like \"%$search_term%\" or authors.`First Name` like  \"%$search_term%\" or authors.`Last Name` like \"%$search_term%\"";
        
        //$results = $this->pdo->query($sql);
-       echo $sql;
+       //echo $sql;
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute(NULL);     
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
