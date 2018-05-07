@@ -37,6 +37,14 @@ class Booksearch{
        //return $results;
     } 
     
+    function updateborrower($Borrower_ID, $ISBN){
+      $sql = "UPDATE books SET  Borrower_ID= '$Borrower_ID'
+              WHERE ISBN=$ISBN";
+      echo $sql;
+      $this->pdo->exec($sql);    
+    }
+
+    
 }
 //       print_r($results);
 //       foreach($results as $row) {
