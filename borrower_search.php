@@ -69,6 +69,8 @@ include 'booksearch_class.php';
         <div class="row">
             <div class="col-12">
                 <h3>Your results for <strong><i><?php echo $_POST["search_term"]; ?></strong></i>:</h3>
+                <h3> Number of results for your search : <?php echo count($results);?></h3>
+                <h3><?php if(count($results) === 0) {echo "There are no results for your search";}?></h3>
             </div>
         </div>        
         
@@ -78,7 +80,6 @@ include 'booksearch_class.php';
                      <?php foreach ($results as $result) { ?>
                         <div class="row result">
                             <div class="col-9">
-                                
                                 <strong>ISBN:</strong> <?php echo $result ["ISBN"]; ?><br/>  
                                 <strong>Title:</strong> <?php echo $result ["Title"]; ?><br/>
                                 <strong>Genre:</strong> <?php echo $result ["Genre"]; ?><br/>
