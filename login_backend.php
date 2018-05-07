@@ -1,5 +1,4 @@
 <?php
-
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
@@ -20,7 +19,7 @@ $email_err = $password_err = "";
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
-    // Check if username is empty
+    // Check if email is empty
     if(empty(trim($_POST["email"]))){
         $email_err = 'Please enter email.';
     } else{
@@ -37,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($email_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT Email, Password FROM user WHERE Email = ?";
+        $sql = "SELECT Email, Password, Admin FROM user WHERE Email = ?";
         
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -45,7 +44,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             // Set parameters
             $param_email = $email;
-            
+            $admin = $row->Admin;
+
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Store result
@@ -54,15 +54,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Check if email exists, if yes then verify password
                 if(mysqli_stmt_num_rows($stmt) == 1){                    
                     // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $email, $hashed_password);
+                    mysqli_stmt_bind_result($stmt, $email, $hashed_password, $admin);
                     if(mysqli_stmt_fetch($stmt)){
                         if(password_verify($password, $hashed_password)){
                             /* Password is correct, so start a new session and
                             save the email to the session */
-                            session_start();
-                            $_SESSION['Email'] = $email;      
-                            header("location: book_search.php");
-                        } else{
+                            
+                            $_SESSION['Email'] = $email;  
+                                                 
+                        if ($admin == 1) {
+                            
+                            header("location: insert_books.php");
+                            exit();
+                    }
+                        else {
+                            
+                            header("location: borrower_search.php");
+                            exit();
+                        } }
+                        
+                        else{
                             // Display an error message if password is not valid
                             $password_err = 'The password you entered was not valid.';
                         }

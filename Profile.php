@@ -1,37 +1,42 @@
 <?php
+session_start();
+   
+require_once 'user_class.php';
 
+if(!isset($_SESSION['Email'])){
 
-if (isset ($_POST['submit'])){
+echo "Sorry, Please login and use this page";
+header("location:login.php");
+exit;}
+
+$validateduser = new User;
+
+$results= $validateduser->search();
+//var_dump($results);
+
+   /* foreach($results as $result){
+    $oldpassword= $result['Password'];}
     
-    
-    $conn = new mysqli('localhost', 'Library', '12345', 'test_library');
-
-
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $newpassword = $_POST['newpassword'];
-        $cnewpassword = $_POST['cnewpassword'];
-        
-        $result = $conn->query("SELECT Password FROM users WHERE Email ='$email'");
-        if(!$result)
-       {
-        echo "The username you entered does not exist";
-        }
-       
-        if ($password = $result['Password'] AND $newpassword == $cnewpassword){
-        $sql = $conn->mysql_query("UPDATE user SET Password='$newpassword' WHERE login='$email'");
-        }
-        if($sql)
+    $password= $_POST['password'];
+      
+    $newpassword = $_POST['newpassword'];
+    $cnewpassword = $_POST['cnewpassword'];       
+     
+      
+        if($password!= $oldpassword)
         {
-        echo "You have  changed your password";
+        echo "You entered an incorrect password";
+        }
+        if($newpassword=$confirmnewpassword){
+        $validateduser->change_password();
+        echo "Congratulations You have successfully changed your password";
         }
        else
         {
-       echo "Update is unsuccesful";
+       echo "The new password and confirm new password fields must be the same";
        }
-      
-}
 
+*/
 ?>
 
 
@@ -58,8 +63,20 @@ if (isset ($_POST['submit'])){
   <img src="blueplanet.jpg" alt="blue planet" class="card-img-top img-fluid" />
   <div class="card-block">
     <h3 class="card-title">Your details</h3>
-    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <p><?php if(!empty($_SESSION))
+        {foreach($results as $result){
+        echo "Hello " . $result['FirstName'] . " ". $result['SecondName'];}}?> 
+    </p>
+    <form action="" method="post">
+
+    <input class="btn btn-primary" type="submit" name="logout" value="Logout"/>
+    </form>
+          <?php 
+       if(isset($_POST['logout'])){ 
+           session_destroy();
+           header("location: login.php");
+       }
+       ?>
   </div>
 </div>
         </div>
@@ -69,18 +86,58 @@ if (isset ($_POST['submit'])){
   <img src="mars.jpg" alt="blue planet" class="card-img-top img-fluid" />
   <div class="card-block">
     <h3 class="card-title">Change password</h3>
-    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     
-    <form>
-        Email Address:         <input class="form-control" type="email"  name="email" placeholder ="Email" /> <br>
-        Password:              <input class="form-control" type="password" name="password" placeholder ="Password"/> <br>
-        New Password:          <input class="form-control" type="password"  name="newpassword" placeholder ="New Password"/> <br>
-        Confirm New Password:  <input class="form-control" type="password"  name="cnewpassword" placeholder ="Confirm New Password"/> <br>
+    <form action="" method="post">
+        
+        <input class="form-control" type="password" name="password" placeholder ="Password"/> <br>
+        <input class="form-control" type="password"  name="newpassword" placeholder ="New Password"/> <br>
+        <input class="form-control" type="password"  name="cnewpassword" placeholder ="Confirm New Password"/> <br>
         
         
         
        <input class="btn btn-primary" type="submit" name="submit" value="Update Password"/>
+       <label></label>
     
+       <?php foreach($results as $result){
+            $oldpassword= $result['Password'];}
+            //echo $oldpassword . PHP_EOL;
+            $password = "";
+            //$password = isset($_POST['password']) ? $_POST['password'] : '';
+            //empty()
+            $password = !empty($_POST['password']) ? $_POST['password'] : '';
+            //echo $password . PHP_EOL;
+                        
+            $newpassword = "";
+           // $newpassword = isset($_POST['newpassword']) ? $_POST['newpassword'] : '';
+            //empty()
+            $newpassword = !empty($_POST['newpassword']) ? $_POST['newpassword'] : '';
+            
+            $cnewpassword = "";
+           // $cnewpassword = isset($_POST['cnewpassword']) ? $_POST['cnewpassword'] : '';
+            //empty()
+            $cnewpassword = !empty($_POST['cnewpassword']) ? $_POST['cnewpassword'] : '';
+      
+              
+     
+      if (isset ($_POST['submit'])){
+        if(password_verify($password, $oldpassword)){
+       
+            if($newpassword==$cnewpassword){
+            $hash = password_hash($newpassword, PASSWORD_DEFAULT);
+
+                $validateduser->change_password($hash);
+        }
+            else
+        {
+            echo "<label>The new password and confirm new password fields must be the same</label>";
+        }
+        
+        }
+       else {
+           echo "<label>The password was incorrect</label>";
+       }
+      }
+?>
     </form>
   </div>
 </div>
