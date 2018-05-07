@@ -26,7 +26,7 @@ if (isset ($_POST['submit'])){
        $hash = password_hash($password, PASSWORD_DEFAULT);
        $conn->query("INSERT INTO user (Email, Firstname, Secondname, Password) VALUES ('$email', '$first_name', '$last_name', '$hash')");
     
-        header( 'Location: ../NewTest/login.php');
+        header( 'Location: login.php');
     
          
     }
