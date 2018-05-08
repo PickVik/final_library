@@ -6,7 +6,7 @@ $msg ="";
 if (isset ($_POST['submit'])){
     
     
-    $conn = new mysqli('localhost', 'Library', '12345', 'final_library');
+    $conn = new mysqli('localhost', 'root', '', 'final_library');
     
     $email = $conn->real_escape_string($_POST['email']);
     $first_name = $conn->real_escape_string($_POST['firstname']);

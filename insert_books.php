@@ -2,48 +2,9 @@
 
 include 'book_class.php';
 
-if (!empty($_POST)) {
-    
-   if (isset($_POST['Insert'])){
-        //echo 'insert';
-        $Book = new Books();
-        //echo 'insert end';
-        $Book->insert($_POST['ISBN'], $_POST['Title'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
-                   
-    }
-    if (isset($_POST['Delete'])){
-    //echo 'delete';
-    $Book = new Books();
-    
-    $Book->delete($_POST['Title']);
-    //echo 'delete end';
-}
-
-
-    if (isset($_POST['Update'])){
-    
-    $Book = new Books();
-    $Book->update($_POST['ISBN'], $_POST['Title'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
-}
-
-    if (isset($_POST['Search'])){
-    
-    $Book = new Books();
-    $results= $Book->search($_POST['ISBN'], $_POST['Title'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
-   ?>           
-
-
-                  
-                  
-
-
-            
+ ?>                       
    
-
-
-
 <!DOCTYPE html>
-
 
 <html>
     <head>
@@ -57,6 +18,7 @@ if (!empty($_POST)) {
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <link href="book.css" rel="stylesheet" type="text/css"/>
     </head>
+    
     <body>
         
         <div class="container-fluid">
@@ -87,8 +49,42 @@ if (!empty($_POST)) {
                     
              </div>
         </div>
-    </form>
 </div> 
+        <?php
+        
+        if (!empty($_POST)) {
+    
+   if (isset($_POST['Insert'])){
+        //echo 'insert';
+        $Book = new Books();
+        //echo 'insert end';
+        $Book->insert($_POST['ISBN'], $_POST['Title'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
+                   
+    }
+    if (isset($_POST['Delete'])){
+    //echo 'delete';
+    $Book = new Books();
+    
+    $Book->delete($_POST['Title']);
+    //echo 'delete end';
+}
+
+
+    if (isset($_POST['Update'])){
+    
+    $Book = new Books();
+    $Book->update($_POST['ISBN'], $_POST['Title'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
+}
+
+    if (isset($_POST['Search'])){
+    
+    $Book = new Books();
+    $results= $Book->search($_POST['ISBN'], $_POST['Title'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
+    }
+    
+    
+?>
+        
         <div class="container" style="align-self: flex-end">
         <div class="col-3">     
         <table>
@@ -101,30 +97,31 @@ if (!empty($_POST)) {
 
 <?php foreach($results as $result) {?>
             
-              <div class="row result">
-                 <div class="col-12">   
-                  
-                      <?php echo "<tr>";?>
+              <div class="rowresult">
+               
+                        <?php echo "<tr>";?>
                         <?php echo "<td>{$result['Title']}</td>";?>
-                         <?php echo "<td>{$result['Borrow_status']}</td>";?>
-                       <?php echo "</tr>";?>
+                        <?php echo "<td>{$result['Borrow_status']}</td>";?>
+                        <?php echo "</tr>";?>
                  </div>
-              </div>
               
+            
+              <?php }?>
+
              </tbody>
                  
         </table>
 </div>
+        </div>
                   
-<?php }
-    }
-?>                 
-         
-  <?php }?>
- 
-
-    </body>
+                    
+  <?php 
+  
+}                     
+  ?>
+    
       
-
+    </form>
+ </body>
 </html>
     
