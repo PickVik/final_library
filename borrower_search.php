@@ -26,13 +26,16 @@ include 'booksearch_class.php';
 <body>
     <div class="jumbotron jumbotron-fluid">
         <h1>Book Search</h1>
-    </div> 
-        
+    </div>     
+    
     <div class="container instructions-container">
+        <div class="row">
+            <a href="profile.php"><button>Go To Profile Page</button></a>
+        </div>
+        
         <div class="row">
             <div class="col-9 instructions">
                 <p>  Searching for a book? - You've come to the right place! <br/>
-<!--                     Select the search category you would like to use - Title, Author or book category<br/>-->
                      Type in your search word/s<br/>
                      Hit submit to get your results<br/>   
                 </p>
@@ -65,41 +68,62 @@ include 'booksearch_class.php';
      
     <?php if(!empty($_POST)) { ?>
     
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h3>Your results for <strong><i><?php echo $_POST["search_term"]; ?></strong></i>:</h3>
-                <h3> Number of results for your search : <?php echo count($results);?></h3>
-                <h3><?php if(count($results) === 0) {echo "There are no results for your search";}?></h3>
-            </div>
-        </div>        
-        
-        <div class="row justify-content-center">
-            <div class="col-6">
-                <div class="container"> 
-                     <?php foreach ($results as $result) { ?>
-                        <div class="row result">
-                            <div class="col-9">
-                                <strong>ISBN:</strong> <?php echo $result ["ISBN"]; ?><br/>  
-                                <strong>Title:</strong> <?php echo $result ["Title"]; ?><br/>
-                                <strong>Genre:</strong> <?php echo $result ["Genre"]; ?><br/>
-                                <strong>Author:</strong> <?php echo $result ["Author_Name"]; ?><br/>
-                                <strong>Price:</strong> <?php echo $result ["Price"]; ?><br/>
-                            </div>
-                            <div class="col-3">
-                                 <button class="btn btn-primary" type="submit">Borrow</button>  
-                            </div>  
-                       
-                        </div>           
-                       
-                    <?php } ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3>Your results for <strong><i><?php echo $_POST["search_term"]; ?></strong></i>:</h3>
+                    <h3> Number of results for your search : <?php echo count($results);?></h3>
+                    <h3><?php if(count($results) === 0) {echo "There are no results for your search";}?></h3>
                 </div>
-            </div>
-        </div> 
+            </div>        
 
-    </div>
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <div class="container"> 
+                         <?php foreach ($results as $result) { ?>
+                            <div class="row result">
+                                <div class="col-9">
+                                    <strong>ISBN:</strong> <?php echo $result ["ISBN"]; ?><br/>  
+                                    <strong>Title:</strong> <?php echo $result ["Title"]; ?><br/>
+                                    <strong>Genre:</strong> <?php echo $result ["Genre"]; ?><br/>
+                                    <strong>Author:</strong> <?php echo $result ["Author_Name"]; ?><br/>
+                                    <strong>Price:</strong> <?php echo $result ["Price"]; ?><br/>
+                                </div>
 
-        <?php  } ?>
+                                <div class="col-3">
+                                    <button class="btn btn-primary" onclick= "borrow(<?php echo $result["ISBN"]; ?>);">Borrow</button>  
+                                </div>  
+
+                            </div>           
+
+                        <?php } ?>
+                    </div>
+                </div>
+            </div> 
+
+        </div>
+
+    <?php  } ?>
+    
+    <script>
+        function borrow(ISBN) {
+                  
+            var xhttp;
+            
+            xhttp = new XMLHttpRequest(); //object instantiation
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+//                    document.getElementById("result").innerHTML = this.responseText;
+                    alert(`Book Borrowed ${ISBN}`);
+                    console.log(this.responseText);
+                }
+            };
+            xhttp.open("GET", "borrow_book.php?ISBN="+ISBN, true);
+            xhttp.send();   
+        }
+    </script> 
+    
+    
 </body>    
 </html>
 
