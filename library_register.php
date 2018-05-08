@@ -1,4 +1,5 @@
 <?php
+
 $msg ="";
 if (isset ($_POST['submit'])){
     
@@ -26,7 +27,7 @@ if (isset ($_POST['submit'])){
        $hash = password_hash($password, PASSWORD_DEFAULT);
        $conn->query("INSERT INTO user (Email, Firstname, Secondname, Password) VALUES ('$email', '$first_name', '$last_name', '$hash')");
     
-        header( 'Location: login.php');
+      //  header( 'Location: login.php');
     
          
     }
@@ -46,15 +47,23 @@ if (isset ($_POST['submit'])){
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="signup.css">
+
         <title>Registration page</title>
     </head>
     <body>
+        <header>
       <div class="jumbotron jumbotron-fluid">
-        <h1>Please Register to Enter Our Site</h1>
+        <h1 id="register">Please Register to Enter Our Site</h1>
      </div>
-        
-
-        <form align="center" action="" method="post"> 
+        </header>
+      <div class="container" align="center">
+           <!-- <div class="jumbotron jumbotron-fluid" id="thankyou"><h1>Thank you for registering</h1></div>
+            <div class="thankyou" align="center"> <img src="Smiley-Face-05-large.png"> <br>
+                <h3>Now please click <a href='login.php'>here</a> to log in</h3>
+            </div>
+-->
+            
+<form id="form" action="" method="post" onsubmit="myFunction();return false;"> 
         
             <div class="form-group">
         <input type="email"  name="Email" placeholder ="Enter Email"/>
@@ -76,7 +85,7 @@ if (isset ($_POST['submit'])){
         <input type="text" name="Secondname" placeholder ="Last Name"/>
             </div>
         
-        <input class="btn btn-success" type="submit" name="submit" value="Let me in"/> 
+        <input class="btn btn-success" type="submit" name="submit" id="button" value="Let me in" /> 
         <br>
         <br>
         <?php if ($msg != "") {echo $msg . "<br><br>";} ?>
@@ -86,11 +95,13 @@ if (isset ($_POST['submit'])){
    
                             <label>Already Registered? Click <a href='login.php'>here</a> to log in</label>
         </form>
-     
+     </div>
         
         
-        <?php
-        // put your code here
-        ?>
+    <script>function myFunction() {
+document.getElementById('register').innerHTML = "Thank you for Registering!";
+document.getElementById('form').innerHTML = "<img src='Smiley-Face-05-large.png' alt='Smiley face' height='150' width='150'> <h3>Now please click <a href='login.php'>here</a> to log in</h3>";}
+</script>
+    
     </body>
 </html>
