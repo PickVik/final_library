@@ -2,7 +2,8 @@
 
 
   h1{
-    padding-top: 20px;  
+    padding-top: 50px;
+    padding-bottom: 50px;
     font-size:x-large;
     text-align: center;
     height: 100px;
@@ -10,30 +11,32 @@
    
 }   
 
-instructions {
+.instructions-container row {
     background-color: buttonface;
     border-radius: 10px;
+    text-align: left;
 }
 
-instructions-container img {
-    width: 100%;
+.instructions-container img {
+    width: 150%;
     image-align: right;
 }
 
  p {
-   padding-top: 20px;
+    
+   padding-bottom: 50px;
    font-size: large;
    text-align: center; 
-   height: 75px;
+   height:50px;
    background-color: lightseagreen;
 }
 
-container{
-    height: 100px;
-    background:cornsilk;
+.row{
+    height:40px;   
     text-align: centre;
-    padding-top: 200px;
-    padding-left: 50px;
+    padding-top: 20px;
+    padding-left: 100px;
+    padding-bottom: 25px;
 }
 
 rowresult{
