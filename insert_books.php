@@ -24,6 +24,9 @@ include 'book_class.php';
         <div class="container-fluid">
              <h1>Welcome to PikVik library!</h1>
              </div>
+         <div class="row">
+            <a href="profile.php"><button>Go To Profile Page</button></a>
+        </div>
                <div class="container-fluid">
        
                   <p>You can update the library here.</p>
@@ -97,7 +100,7 @@ include 'book_class.php';
 
 <?php foreach($results as $result) {?>
             
-              <div class="rowresult">
+              <div class="row result">
                
                         <?php echo "<tr>";?>
                         <?php echo "<td>{$result['Title']}</td>";?>
