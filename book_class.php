@@ -24,19 +24,30 @@ class Books{
 
     }
     
-    function insert($ISBN, $Title, $Type, $Genre, $Price, $Borrow_status){
+    function insert($ISBN, $Title,$Fname,$Lname, $Type, $Genre, $Price, $Borrow_status){
         $sql = "INSERT INTO books ( ISBN, Title, Type, Genre, Price, Borrow_status )
         VALUES ( '$ISBN','$Title', '$Type','$Genre', '$Price', '$Borrow_status')";
         echo $sql;
         $this->pdo->exec($sql);
         
+        $sql="INSERT INTO authors(`First Name`,`Last Name`)VALUES ('$Fname','$Lname')";
+        $this->pdo->exec($sql);   
+        
+        $authorid = $this->pdo->lastInsertId();
+        
+        $sql="INSERT INTO Book_authors(ISBN,Author_ID)VALUES ('$ISBN','$authorid')";
+        $this->pdo->exec($sql);   
+        
+        
         
     }
-    function delete($Title){
+    function delete($Title,$Fname,$Lname){
         $sql = "DELETE FROM books WHERE Title ='$Title'";
        
         echo $sql;
         $this->pdo->exec($sql);
+        
+        
         
     }
     

@@ -8,6 +8,8 @@
     public $Genre;
     public $Price;
     public $Borrow_status;
+    public $Fname;
+    public $Lname;
    
    public function __construct() {
        
@@ -21,6 +23,10 @@
         $this->genre = $Genre;
         $this->price = $Price;
         $this->borrow_status= $Borrow_status;
+        $this->Fname=$Fname;
+        $this->Lname=$Lname;
+        
+        
    }
         function getISBN() {
           return $this->ISBN;
@@ -45,6 +51,13 @@
       function getBorrow_status() {
           return $this->Borrow_status;
       }
+      
+      function get_Fname() {
+        return $this->Fname;
+    }
+      function get_Lname() {
+        return $this->Fname;
+    }
 
       function setISBN($ISBN) {
           $this->ISBN = $ISBN;
@@ -69,6 +82,11 @@
       function setBorrow_status($Borrow_status) {
           $this->Borrow_status = $Borrow_status;
       }
-   
+      function set_Fname($Fname) {
+        $this->Fname = $Fname;
+    }
+      function set_Lname($Lname) {
+        $this->Lname = $Lname;
+    }
    }
   

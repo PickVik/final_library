@@ -35,12 +35,14 @@ include 'book_class.php';
     <form action="" method="post" > 
         <div class="container"> 
              <div> 
-                 <strong>ISBN:   </strong><input type="int" name="ISBN" /> <br><br>
-                 <strong>Title:  </strong> <input type="text" name="Title" /> <br><br>
-                 <strong>Type:   </strong> <input type="text" name="Type" /> <br><br>
-                 <strong>Genre:  </strong> <input type="text" name="Genre" /> <br><br>
-                 <strong>Price:  </strong><input type="text" name="Price" /> <br><br>
-                 <strong>Borrow_status:   </strong><input type="text" name="Borrow_status" /> <br><br>
+                 <strong>ISBN                :   </strong><input type="int" name="ISBN" /> <br><br>
+                 <strong>Title               :   </strong><input type="int" name="Title" /> <br><br>
+                 <strong>Author's First name :   </strong><input type="int" name="First_name" /> <br><br>
+                 <strong>Author's last name  :  </strong> <input type="text" name="Last_name" /> <br><br>
+                 <strong>Type                :   </strong> <input type="text" name="Type" /> <br><br>
+                 <strong>Genre               :  </strong> <input type="text" name="Genre" /> <br><br>
+                 <strong>Price               :  </strong><input type="text" name="Price" /> <br><br>
+                 <strong>Borrow_status       :   </strong><input type="text" name="Borrow_status" /> <br><br>
             <div>
                     <input type="submit" name="Insert" value="Insert" /> 
                     <input type="submit" name="Delete" value="Delete" />
@@ -58,7 +60,7 @@ include 'book_class.php';
         //echo 'insert';
         $Book = new Books();
         //echo 'insert end';
-        $Book->insert($_POST['ISBN'], $_POST['Title'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
+        $Book->insert($_POST['ISBN'], $_POST['Title'],$_POST['First_name'],$_POST['Last_name'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
                    
     }
     if (isset($_POST['Delete'])){
@@ -73,13 +75,13 @@ include 'book_class.php';
     if (isset($_POST['Update'])){
     
     $Book = new Books();
-    $Book->update($_POST['ISBN'], $_POST['Title'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
+    $Book->update($_POST['ISBN'], $_POST['Title'],$_POST['First_name'],$_POST['Last_name'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
 }
 
     if (isset($_POST['Search'])){
     
     $Book = new Books();
-    $results= $Book->search($_POST['ISBN'], $_POST['Title'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
+    $results= $Book->search($_POST['ISBN'], $_POST['Title'],$_POST['First_name'],$_POST['Last_name'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
     }
     
     
