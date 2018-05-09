@@ -5,11 +5,12 @@ if(!isset($_SESSION['Email'])&& ($_SESSION['Admin']==1)){
 
 echo "Sorry, Please login and use this page";
 header("location:login.php");
-exit;}
+exit;
 
 if ($_SESSION['Admin'] == 0){
     
     header("location:borrower_search.php");
+}
 }
  ?>                       
    
