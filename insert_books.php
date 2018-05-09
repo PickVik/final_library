@@ -14,6 +14,8 @@ if ($_SESSION['Admin'] == 0){
 }
  ?>                       
    
+                     
+   
 <!DOCTYPE html>
 
 <html>
@@ -35,7 +37,7 @@ if ($_SESSION['Admin'] == 0){
              <h1>Welcome to PikVik library!</h1>
              </div>
          <div class="row">
-            <a href="admin_profile.php"><button>Go To Profile Page</button></a>
+            <a href="profile.php"><button>Go To Profile Page</button></a>
         </div>
                <div class="container-fluid">
        
@@ -83,14 +85,11 @@ if ($_SESSION['Admin'] == 0){
     $Book->delete($_POST['Title']);
     //echo 'delete end';
 }
-
-
     if (isset($_POST['Update'])){
     
     $Book = new Books();
     $Book->update($_POST['ISBN'], $_POST['Title'],$_POST['First_name'],$_POST['Last_name'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
 }
-
     if (isset($_POST['Search'])){
     
     $Book = new Books();
@@ -109,19 +108,6 @@ if ($_SESSION['Admin'] == 0){
             </thead>
             <tbody>
                 
-
-<?php foreach($results as $result) {?>
-            
-              <div class="row result">
-               
-                        <?php echo "<tr>";?>
-                        <?php echo "<td>{$result['Title']}</td>";?>
-                        <?php echo "<td>{$result['Borrow_status']}</td>";?>
-                        <?php echo "</tr>";?>
-                 </div>
-              
-            
-              <?php }?>
 
              </tbody>
                  
