@@ -69,7 +69,7 @@ $results= $validateduser->search();
     </p>
     <form action="" method="post">
 
-        <input class="btn btn-primary" type="submit" name="logout" value="Logout"/><br><br
+        <input class="btn btn-primary" type="submit" name="logout" value="Logout"/><br><br>
         <input class="btn btn-primary" type="submit" name="search" value="Back to Search Page"/>
 
     </form>
@@ -152,8 +152,12 @@ $results= $validateduser->search();
   <img src="planet.jpg" alt="blue planet" class="card-img-top img-fluid" />
   <div class="card-block">
     <h3 class="card-title">Borrowing status</h3>
-    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <?php
+    require_once 'borrower_class.php';
+    $borrower = new Borrower;
+    $Email = $_SESSION['Email'];
+    $borrower->borrow_status($Email);
+    ?>
   </div>
     </div>
        </div>
