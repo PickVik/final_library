@@ -25,7 +25,7 @@ include 'book_class.php';
              <h1>Welcome to PikVik library!</h1>
              </div>
          <div class="row">
-            <a href="profile.php"><button>Go To Profile Page</button></a>
+            <a href="admin_profile.php"><button>Go To Profile Page</button></a>
         </div>
                <div class="container-fluid">
        
