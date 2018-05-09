@@ -69,12 +69,16 @@ $results= $validateduser->search();
     </p>
     <form action="" method="post">
 
-    <input class="btn btn-primary" type="submit" name="logout" value="Logout"/>
+        <input class="btn btn-primary" type="submit" name="logout" value="Logout"/><br><br>
+        <input class="btn btn-primary" type="submit" name="search" value="Back to Search Page"/>
     </form>
           <?php 
        if(isset($_POST['logout'])){ 
            session_destroy();
            header("location: login.php");
+       }
+       if(isset($_POST['search'])){ 
+           header("location: insert_books.php");
        }
        ?>
   </div>
