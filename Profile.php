@@ -69,7 +69,7 @@ $results= $validateduser->search();
     </p>
     <form action="" method="post">
 
-        <input class="btn btn-primary" type="submit" name="logout" value="Logout"/><br><br>
+        <input class="btn btn-primary" type="submit" name="logout" value="Logout"/><br><br
         <input class="btn btn-primary" type="submit" name="search" value="Back to Search Page"/>
 
     </form>
@@ -100,7 +100,7 @@ $results= $validateduser->search();
         
         
         
-       <input class="btn btn-primary" type="submit" name="submit" value="Update Password"/>
+       <input class="btn btn-danger" type="submit" name="submit" value="Update Password"/>
        <label></label>
     
        <?php foreach($results as $result){

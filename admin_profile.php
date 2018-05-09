@@ -2,6 +2,7 @@
 session_start();
    
 require_once 'user_class.php';
+require_once 'login_backend.php';
 
 if(!isset($_SESSION['Email'])){
 
@@ -9,9 +10,21 @@ echo "Sorry, Please login and use this page";
 header("location:login.php");
 exit;}
 
+if ($_SESSION['Admin'] == 0){
+    
+    header("location:Profile.php");
+}
+
 $validateduser = new User;
 
 $results= $validateduser->search();
+
+$admin = $validateduser->admin_status();
+
+if ($admin == 0) {
+    header("location:Profile.php");
+    exit;
+}
 //var_dump($results);
 
    /* foreach($results as $result){

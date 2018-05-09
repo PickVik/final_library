@@ -45,6 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Set parameters
             $param_email = $email;
             $admin = $row->Admin;
+            $ID = $row->ID;
 
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -61,6 +62,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             save the email to the session */
                             
                             $_SESSION['Email'] = $email;  
+                            $_SESSION['Admin'] = $admin;
+                            $_SESSION['ID'] = $ID;
                                                  
                         if ($admin == 1) {
                             
