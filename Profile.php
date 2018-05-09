@@ -2,7 +2,6 @@
 session_start();
    
 require_once 'user_class.php';
-require_once 'login_backend.php';
 
 if(!isset($_SESSION['Email'])){
 
@@ -66,11 +65,11 @@ $results= $validateduser->search();
     <h3 class="card-title">Your details</h3>
     <p><?php if(!empty($_SESSION))
         {foreach($results as $result){
-        echo "Hello " . $result['FirstName'] . " ". $result['SecondName'];}};?> 
+        echo "Hello " . $result['FirstName'] . " ". $result['SecondName'];}}?> 
     </p>
     <form action="" method="post">
 
-        <input class="btn btn-primary" type="submit" name="logout" value="Logout"/><br><br>
+        <input class="btn btn-primary" type="submit" name="logout" value="Logout"/><br><br
         <input class="btn btn-primary" type="submit" name="search" value="Back to Search Page"/>
 
     </form>
@@ -153,14 +152,8 @@ $results= $validateduser->search();
   <img src="planet.jpg" alt="blue planet" class="card-img-top img-fluid" />
   <div class="card-block">
     <h3 class="card-title">Borrowing status</h3>
-    <?php require_once 'borrower_class.php';
-            
-        $Email = $_SESSION['Email'];
-            $borrower = new Borrower;
-            $borrower->borrow_status($Email);
-            
-          
-?>
+    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
     </div>
        </div>

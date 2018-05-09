@@ -46,19 +46,10 @@ return $stmt->fetchAll(PDO::FETCH_ASSOC);}
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
         }
         
-        function borrow_status($ID){
-       $sql = "SELECT books.Title, CONCAT (authors.'First Name', ' ', authors.'Last Name') as Author_Name, user.Email
-    FROM authors
-    LEFT JOIN book_authors ON book_authors. Author_ID = authors.Author_ID
-    LEFT JOIN books ON book_authors . ISBN = books . ISBN
-    LEFT JOIN borrowed_books ON borrowed_books. Author_ID = authors.Author_ID
-    LEFT JOIN user ON borrowed_books.User_ID = user.ID
-    WHERE ID = '$ID'";
-        
+        function borrow_status(){
+        $sql = "CALL `AddUserToBook`(); SELECT ID FROM user WHERE User_ID = '$_SESSION[Email]'";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute(NULL);     
         return $stmt->fetchAll(PDO::FETCH_ASSOC);}
                 
         }
-
-   

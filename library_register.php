@@ -25,12 +25,8 @@ if (isset ($_POST['submit'])){
         
        $hash = password_hash($password, PASSWORD_DEFAULT);
        $conn->query("INSERT INTO user (Email, Firstname, Secondname, Password) VALUES ('$email', '$first_name', '$last_name', '$hash')");
-       if ($conn == TRUE){
-             header( 'Location: register_success.php');
-        }else{
-            $msg = "something went wrong please try again";
-        }        
-       
+    
+        header( 'Location: register_success.php');
     
          
     }
