@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+//session_start();
+
+
 require_once 'user_class.php';
 //print_r ($_SESSION);
 $validateduser = new User;

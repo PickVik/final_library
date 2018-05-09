@@ -1,7 +1,12 @@
 <?php
-
+session_start();
 include 'booksearch_class.php';
 
+if(!isset($_SESSION['Email'])){
+
+echo "Sorry, Please login and use this page";
+header("location:login.php");
+exit;}
   if (!empty($_POST)) {
 
         $books = new Booksearch();

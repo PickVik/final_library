@@ -1,5 +1,4 @@
 <?php
-
 $msg ="";
 if (isset ($_POST['submit'])){
     
@@ -27,7 +26,7 @@ if (isset ($_POST['submit'])){
        $hash = password_hash($password, PASSWORD_DEFAULT);
        $conn->query("INSERT INTO user (Email, Firstname, Secondname, Password) VALUES ('$email', '$first_name', '$last_name', '$hash')");
     
-      //  header( 'Location: login.php');
+        header( 'Location: register_success.php');
     
          
     }
@@ -63,7 +62,7 @@ if (isset ($_POST['submit'])){
             </div>
 -->
             
-<form id="form" action="" method="post" onsubmit="myFunction();return false;"> 
+<form id="form" action="" method="post"> 
         
             <div class="form-group">
         <input type="email"  name="Email" placeholder ="Enter Email"/>
@@ -85,7 +84,7 @@ if (isset ($_POST['submit'])){
         <input type="text" name="Secondname" placeholder ="Last Name"/>
             </div>
         
-        <input class="btn btn-success" type="submit" name="submit" id="button" value="Let me in" /> 
+        <input class="btn btn-success" type="submit" name="submit" id="button" value="Let me in"/> 
         <br>
         <br>
         <?php if ($msg != "") {echo $msg . "<br><br>";} ?>
@@ -98,10 +97,7 @@ if (isset ($_POST['submit'])){
      </div>
         
         
-    <script>function myFunction() {
-document.getElementById('register').innerHTML = "Thank you for Registering!";
-document.getElementById('form').innerHTML = "<img src='Smiley-Face-05-large.png' alt='Smiley face' height='150' width='150'> <h3>Now please click <a href='login.php'>here</a> to log in</h3>";}
-</script>
+    
     
     </body>
 </html>

@@ -67,7 +67,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             header("location: insert_books.php");
                             exit();
                     }
-                        else {
+                        if ($admin == 0) {
                             
                             header("location: borrower_search.php");
                             exit();
