@@ -5,6 +5,10 @@ if(!isset($_SESSION['Email'])){
 echo "Sorry, Please login and use this page";
 header("location:login.php");
 exit;
+
+
+
+
 if ($_SESSION['Admin'] == 0){
     
     header("location:borrower_search.php");

@@ -45,7 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Set parameters
             $param_email = $email;
             $admin = $row->Admin;
-            $ID = $row->ID;
+           // $ID = $row->ID;
 
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
