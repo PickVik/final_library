@@ -1,13 +1,10 @@
 <?php
-
 include 'library_books.php';
-
 class Books{
     
     public $books = array();
    
     public $pdo;
-
     
     function __construct() {
         
@@ -21,7 +18,6 @@ class Books{
          die();
     }       
         
-
     }
     
     function insert($ISBN, $Title,$Fname,$Lname, $Type, $Genre, $Price, $Borrow_status){
@@ -74,11 +70,8 @@ class Books{
         // $this->pdo-> fetchAll(PDO::FETCH_ASSOC);
         
 }
-
     
 }  
-
-
   /*  function search2 ($search_term)    {
        echo "searching" ;
        $sql = "SELECT books.ISBN, books.Title, books.Price, books.Genre, CONCAT(authors.`First Name`, ' ', authors.`Last Name`) as Author_Name
@@ -98,4 +91,3 @@ class Books{
                }
     }  */
   
-
