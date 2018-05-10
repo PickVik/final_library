@@ -2,14 +2,13 @@
 session_start();
 include 'book_class.php';
 if(!isset($_SESSION['Email'])){
-
 echo "Sorry, Please login and use this page";
 header("location:login.php");
-exit;}
-
+exit;
 if ($_SESSION['Admin'] == 0){
     
     header("location:borrower_search.php");
+}
 }
  ?>                       
    
@@ -75,21 +74,18 @@ if ($_SESSION['Admin'] == 0){
         $Book->insert($_POST['ISBN'], $_POST['Title'],$_POST['First_name'],$_POST['Last_name'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
                    
     }
-    if (isset($_POST['Delete'],$_POST['First_name'],$_POST['Last_name'])){
+    if (isset($_POST['Delete'])){
     //echo 'delete';
     $Book = new Books();
     
-    $Book->delete($_POST['Title']);
+    $Book->delete($_POST['Title'],$_POST['First_name'],$_POST['Last_name']);
     //echo 'delete end';
 }
-
-
-    if (isset($_POST['Update'],$_POST['First_name'],$_POST['Last_name'])){
+    if (isset($_POST['Update'])){
     
     $Book = new Books();
     $Book->update($_POST['ISBN'], $_POST['Title'],$_POST['First_name'],$_POST['Last_name'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
 }
-
     if (isset($_POST['Search'])){
     
     $Book = new Books();
@@ -138,4 +134,3 @@ if ($_SESSION['Admin'] == 0){
     </form>
  </body>
 </html>
-    
