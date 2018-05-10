@@ -75,7 +75,7 @@ if ($_SESSION['Admin'] == 0){
         $Book->insert($_POST['ISBN'], $_POST['Title'],$_POST['First_name'],$_POST['Last_name'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);
                    
     }
-    if (isset($_POST['Delete'])){
+    if (isset($_POST['Delete'],$_POST['First_name'],$_POST['Last_name'])){
     //echo 'delete';
     $Book = new Books();
     
@@ -84,7 +84,7 @@ if ($_SESSION['Admin'] == 0){
 }
 
 
-    if (isset($_POST['Update'])){
+    if (isset($_POST['Update'],$_POST['First_name'],$_POST['Last_name'])){
     
     $Book = new Books();
     $Book->update($_POST['ISBN'], $_POST['Title'],$_POST['First_name'],$_POST['Last_name'], $_POST['Type'], $_POST['Genre'], $_POST['Price'], $_POST['Borrow_status']);

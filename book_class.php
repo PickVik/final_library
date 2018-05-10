@@ -47,7 +47,8 @@ class Books{
         echo $sql;
         $this->pdo->exec($sql);
         
-        
+        $sql="DELETE FROM authors WHERE `Last Name`='$Lname'";
+        $this->pdo->exec($sql);
         
     }
     
@@ -55,9 +56,13 @@ class Books{
         $sql = "UPDATE books SET  ISBN= '$ISBN', Title='$Title', Type='$Type', Genre='$Genre',Price='$Price', Borrow_status='$Borrow_status'
         where Title='$Title'";
         echo $sql;
-        $this->pdo->exec($sql);    
+        $this->pdo->exec($sql);
+        
+        //depending on the scenario, the data and values will vary.
+        $sql="UPDATE authors SET `First Name`='$Fname' WHERE `Last Name`='$Lname'";
+        $this->pdo->exec($sql);   
     }
-    function search($ISBN, $Title, $Type, $Genre, $Price){
+    function search($ISBN, $Title, $Type, $Genre, $Price,$Borrow_status){
         $sql = "SELECT    ISBN, Title, Type, Genre, Price, Borrow_status
                 FROM books WHERE  ISBN= '$ISBN' OR Title='$Title' OR Type='$Type' OR Genre='$Genre' OR Price= '$Price'";
         echo $sql;
